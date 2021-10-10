@@ -37,4 +37,4 @@ docker diff redis
 docker run --detach --entrypoint ruby --name hasher --network hasher --volume ${PWD}/hasher/hasher.rb:/hasher.rb:ro ${github_username}/${github_repository}:${github_branch}-hasher hasher.rb
 
 
-docker run --detach --name rng --network rng --volume ${PWD}/rng/rng.py ${github_username}/${github_repository}:${github_branch}-rng rng.py
+docker run --detach --entrypoint python --name rng --network rng --volume ${PWD}/rng/rng.py:/rng.py:ro ${github_username}/${github_repository}:${github_branch}-rng rng.py
