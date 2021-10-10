@@ -1,11 +1,11 @@
-# dockercoins
+dockercoins
 ...
 ...
 github_branch=2021-10
 github_repository=dockercoins
 github_username=amikshas
 ...
-
+...
 git clone https://github.com/amikshas/dockercoins
 cd dockercoins/
 git checkout 2021-10
@@ -48,4 +48,4 @@ done
 
 docker run --detach --entrypoint node --name webui --network redis --publish 8080 --volume ${PWD}/webui/webui.js:/webui.js:ro --volume ${PWD}/webui/files/:/files/:ro ${github_username}/${github_repository}:${github_branch}-webui webui.js
 
-
+...
