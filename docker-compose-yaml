@@ -23,7 +23,7 @@ services:
     entrypoint: ruby
     expose:
       - 8080
-    image: academiaonline/dockercoins:2021-10-hasher
+    image: amikshas/dockercoins:2021-10-hasher
     networks:
       - hasher
   redis:
@@ -53,7 +53,7 @@ services:
     entrypoint: python
     expose:
       - 8080
-    image: academiaonline/dockercoins:2021-10-rng
+    image: amikshas/dockercoins:2021-10-rng
     networks:
       - rng
     volumes:
@@ -78,7 +78,7 @@ services:
     entrypoint: node
     expose:
       - 8080
-    image: academiaonline/dockercoins:2021-10-webui
+    image: amikshas/dockercoins:2021-10-webui
     networks:
       - redis
     ports:
@@ -96,7 +96,7 @@ services:
         constraints:
           - node.role == worker
     entrypoint: python
-    image: academiaonline/dockercoins:2021-10-worker
+    image: amikshas/dockercoins:2021-10-worker
     networks:
       - hasher
       - redis
