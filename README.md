@@ -38,3 +38,14 @@ docker run --detach --entrypoint ruby --name hasher --network hasher --volume ${
 
 
 docker run --detach --entrypoint python --name rng --network rng --volume ${PWD}/rng/rng.py:/rng.py:ro ${github_username}/${github_repository}:${github_branch}-rng rng.py
+...
+...
+for app in hasher rng 
+do
+ docker network connect ${app} worker
+done 
+...
+
+docker run --detach --entrypoint node --name webui --network redis --volume ${PWD}/webui/webui.py:/rng.py:ro ${github_username}/${github_repository}:${github_branch}-webui rng.py
+
+
