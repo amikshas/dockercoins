@@ -5,10 +5,11 @@ github_repository=dockercoins
 github_username=amikshas
 ...
 
+...
 git clone https://github.com/amikshas/dockercoins
 cd dockercoins/
 git checkout 2021-10
-
+...
 
 for app in hasher rng webui worker
 do 
