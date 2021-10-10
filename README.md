@@ -1,6 +1,5 @@
-dockercoins
-...
-...
+#dockercoins
+
 github_branch=2021-10
 github_repository=dockercoins
 github_username=amikshas
@@ -24,13 +23,8 @@ done
 ...
 ...
 docker volume create redis
-
 docker run --detach --name redis --network redis --volume redis:/data:rw library/redis:alpine
-
-
 docker diff redis
-
-
 ...
 ...
 docker run --detach --entrypoint ruby --name hasher --network hasher --volume ${PWD}/hasher/hasher.rb:/hasher.rb:ro ${github_username}/${github_repository}:${github_branch}-hasher hasher.rb
@@ -45,7 +39,5 @@ do
 done 
 ...
 ...
-
 docker run --detach --entrypoint node --name webui --network redis --publish 8080 --volume ${PWD}/webui/webui.js:/webui.js:ro --volume ${PWD}/webui/files/:/files/:ro ${github_username}/${github_repository}:${github_branch}-webui webui.js
 
-...
