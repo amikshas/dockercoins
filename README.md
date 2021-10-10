@@ -30,19 +30,19 @@ docker volume create redis
 ```
 
 ```
-docker run --detach --name redis --network redis --volume redis:/data:rw library/redis:alpine
+docker run --detach --name redis --network redis --restart always --volume redis:/data:rw library/redis:alpine
 docker diff redis
 ```
 
 
 ```
-docker run --detach --entrypoint ruby --name hasher --network hasher --volume ${PWD}/hasher/hasher.rb:/hasher.rb:ro ${github_username}/${github_repository}:${github_branch}-hasher hasher.rb
+docker run --detach --entrypoint ruby --name hasher --restart always --network hasher --volume ${PWD}/hasher/hasher.rb:/hasher.rb:ro ${github_username}/${github_repository}:${github_branch}-hasher hasher.rb
 
 docker logs hasher
 ```
 
 ```
-docker run --detach --entrypoint python --name rng --network rng --volume ${PWD}/rng/rng.py:/rng.py:ro ${github_username}/${github_repository}:${github_branch}-rng rng.py
+docker run --detach --entrypoint python --name rng --restart always --network rng --volume ${PWD}/rng/rng.py:/rng.py:ro ${github_username}/${github_repository}:${github_branch}-rng rng.py
 
 docker logs rng
 ```
@@ -57,7 +57,7 @@ docker network ls
 ```
 
 ```
-docker run --detach --entrypoint node --name webui --network redis --publish 8080 --volume ${PWD}/webui/webui.js:/webui.js:ro --volume ${PWD}/webui/files/:/files/:ro ${github_username}/${github_repository}:${github_branch}-webui webui.js
+docker run --detach --entrypoint node --name webui --restart always --network redis --publish 8080 --volume ${PWD}/webui/webui.js:/webui.js:ro --volume ${PWD}/webui/files/:/files/:ro ${github_username}/${github_repository}:${github_branch}-webui webui.js
 
 docker logs webui
 
